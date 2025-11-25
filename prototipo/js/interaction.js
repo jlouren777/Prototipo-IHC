@@ -1,9 +1,10 @@
+// CONTROLES DO CARROSSEL
 document.querySelectorAll('.carrossel-container').forEach(container => {
   const carrossel = container.querySelector('.carrossel');
   const btnLeft = container.querySelector('.btn-left');
   const btnRight = container.querySelector('.btn-right');
 
-  const scrollAmount = 220;; // rola a largura visível inteira
+  const scrollAmount = 220;
 
   btnLeft.addEventListener('click', () => {
     carrossel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -14,62 +15,54 @@ document.querySelectorAll('.carrossel-container').forEach(container => {
   });
 });
 
+
+// ===============================
+// CAMPO DE BUSCA
+// ===============================
+
 const campoBusca = document.getElementById('campoBusca');
 const filmes = document.querySelectorAll('.filme');
+
 const secoesParaEsconder = [
   document.getElementById('destaque'),
   document.getElementById('populares'),
   document.getElementById('tituloPopulares'),
-  // Adicione aqui outros IDs de seções que você quer esconder
 ];
-const todosH2 = document.querySelectorAll('h2')
+
+const todosH2 = document.querySelectorAll('h2');
+
 const botoes1 = document.querySelectorAll('.btn.btn-right');
 const botoes2 = document.querySelectorAll('.btn.btn-left');
+
+
+// EVENTO DO CAMPO DE BUSCA
 campoBusca.addEventListener('input', () => {
   const termo = campoBusca.value.toLowerCase().trim();
-  let encontrou = false;
+  const estaBuscando = termo !== '';
 
-  // Filtra os filmes
+  // FILTRO DOS FILMES
   filmes.forEach(filme => {
-    const img = filme.querySelector('img');
-    const nome = img.alt.toLowerCase();
+    const nome = filme.querySelector('img').alt.toLowerCase();
 
-    if (nome.includes(termo) && termo !== '') {
-      filme.style.display = 'block';
-      encontrou = true;
+    if (estaBuscando) {
+      filme.style.display = nome.includes(termo) ? 'block' : 'none';
     } else {
-      filme.style.display = 'none';
+      filme.style.display = ''; // volta ao CSS original
     }
   });
 
-  //remove 
-  if (termo !== '') {
-    // Esconde os botões quando tem texto na busca
-    botoes1.forEach(botao => botao.style.display = 'none');
-  } else {
-    // Mostra os botões quando a busca estiver vazia
-    botoes1.forEach(botao => botao.style.display = '');
-  }
-  if (termo !== '') {
-    
-    botoes2.forEach(botao => botao.style.display = 'none');
-  } else {
-    botoes2.forEach(botao => botao.style.display = '');
-  }
-  if (termo !== '') {
-    secoesParaEsconder.forEach(secao => {
-      if (secao) secao.style.display = 'none';
-    });
-    todosH2.forEach(h2 => {
-      h2.style.display = 'none'
-    });
-  } else {
-    secoesParaEsconder.forEach(secao => {
-      if (secao) secao.style.display = '';
-    });
+  // MOSTRAR / ESCONDER BOTÕES
+  [...botoes1, ...botoes2].forEach(btn =>
+    btn.style.display = estaBuscando ? 'none' : ''
+  );
 
-    filmes.forEach(filme => {
-      filme.style.display = 'block';
-    });
-  }
+  // ESCONDER / MOSTRAR SEÇÕES
+  secoesParaEsconder.forEach(secao => {
+    if (secao) secao.style.display = estaBuscando ? 'none' : '';
+  });
+
+  // ESCONDER / MOSTRAR H2
+  todosH2.forEach(h2 =>
+    h2.style.display = estaBuscando ? 'none' : ''
+  );
 });
