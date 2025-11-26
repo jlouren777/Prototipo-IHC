@@ -13,15 +13,73 @@
   </head>
 
   <body class="app">
-    <header class="cabecalho">
-      <nav class="lista__cabecalho">
-        <p href="logo">LocaFlix⭐</p>
-        <input type="text" id="campoBusca" placeholder="🔍​Buscar filme..." />
-        <article>
-          <a class="cabecalho__click" href="index_login.html">Login</a>
-        </article>
-      </nav>
-    </header>
+    <div id="cart-sidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3>🛒 Meu Carrinho</h3>
+        <button class="close-btn" onclick="toggleCartSidebar()">×</button>
+      </div>
+      <div id="cart-items" class="cart-items">
+        <p>Nenhum filme no carrinho.</p>
+      </div>
+      <div class="cart-footer">
+        <p>Total: <span id="cart-total">R$ 0,00</span></p>
+        <button class="checkout-btn" onclick="openPaymentModal()">
+          Finalizar Compra
+        </button>
+      </div>
+    </div>
+
+    <div id="payment-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+        <h4>Selecione a Opção de Pagamento</h4>
+        <div id="payment-options">
+          <label
+            ><input type="radio" name="payment" value="credit-card" />
+            Cartão de Crédito</label
+          >
+          <label><input type="radio" name="payment" value="pix" /> Pix</label>
+          <label
+            ><input type="radio" name="payment" value="boleto" />
+            Boleto</label
+          >
+        </div>
+        <button onclick="confirmPayment()">Confirmar Pagamento</button>
+      </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeConfirmationModal()">&times;</span>
+        <h4 id="confirmation-message"></h4>
+        <button onclick="closeConfirmationModal()">Fechar</button>
+      </div>
+    </div>
+
+   <header class="cabecalho">
+  <nav class="lista__cabecalho">
+    <p href="logo">LocaFlix⭐</p>
+    <input type="text" id="campoBusca" placeholder="🔍​Buscar filme..." />
+    <article>
+      <a class="cabecalho__click" href="index_login.html">Login</a>
+
+      <button class="cart-icon-button" onclick="toggleCartSidebar()">
+        <span id="cart-count">0</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 576 512"
+          fill="white"
+          width="24px"
+          height="24px"
+        >
+          <path
+            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H204.3c-43.9 0-81.7-28-100.6-67.9L16 64H24C10.7 64 0 53.3 0 40V24zM240 448a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm256 0a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+          />
+        </svg>
+      </button>
+    </article>
+  </nav>
+</header>
 
     <main>
       <section class="imagem__principal" id="destaque">
@@ -42,7 +100,6 @@
         </div>
       </section>
 
-      <!-- PRIMEIRO CARROSSEL -->
       <h2>Populares na Plataforma</h2>
       <section class="carrossel-container" id="destaques">
         <button class="btn btn-left">&#10094;</button>
@@ -52,8 +109,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('robocop')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=robocop'"
               >
@@ -67,8 +125,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('wandering')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=wandering'"
               >
@@ -82,8 +141,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('thunderbolts')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=thunderbolts'"
               >
@@ -97,8 +157,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Uncharted')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=uncharted'"
               >
@@ -112,8 +173,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('MadMax')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=madmax'"
               >
@@ -130,8 +192,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('De Volta Para o Futuro')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=devoltaparaofuturo'"
               >
@@ -164,8 +227,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Uma Familia Feliz')">
-                Adicionar ao carrinho</button
-              >><br />
+                Adicionar ao carrinho
+              </button>
+              ><br />
               <button
                 onclick="window.location.href='detalhes.html?filme=umafamiliafeliz'"
               >
@@ -182,8 +246,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Pets a Vida Selvagem')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=petsavidaselvagem'"
               >
@@ -197,8 +262,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Estrela de Belem')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=estreladebelem'"
               >
@@ -212,8 +278,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('A Caminho de Casa')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=acaminhodecasa'"
               >
@@ -227,8 +294,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Divertidamente')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=divertidamente'"
               >
@@ -252,8 +320,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Na Companhia do Mal')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=nacompanhiadomal'"
               >
@@ -267,8 +336,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Sessão 9')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=sessao9'"
               >
@@ -282,8 +352,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Cadaver')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=cadaver'"
               >
@@ -297,8 +368,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('A Entidade')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=aentidade'"
               >
@@ -312,8 +384,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('It a Coisa')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=itacoisa'"
               >
@@ -327,8 +400,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Fale Comigo')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=falecomigo'"
               >
@@ -349,8 +423,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Super 8')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=super8'"
               >
@@ -364,8 +439,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Na Selva')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=naselva'"
               >
@@ -382,8 +458,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Dungeons e Dragons')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=dungeonsedragons'"
               >
@@ -397,8 +474,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('A Grande Muralha')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=agrandemuralha'"
               >
@@ -412,8 +490,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('Monster Hunter')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=monsterhunter'"
               >
@@ -430,8 +509,9 @@
             <div class="overlay">
               <p>Alugar por R$ 7,90</p>
               <button onclick="addToCart('O Senhor dos Anéis')">
-                Adicionar ao carrinho</button
-              ><br />
+                Adicionar ao carrinho
+              </button>
+              <br />
               <button
                 onclick="window.location.href='detalhes.html?filme=osenhordosaneis'"
               >

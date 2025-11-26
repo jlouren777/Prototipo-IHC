@@ -2,172 +2,343 @@ html, body{
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #0d0f12; /* fundo escuro */
-  color: #e6e6e6;
-  font-family: sans-serif;
+  background-color: #fff4b8;
+}
+h2{
+    margin-left: 50px;
 }
 
-/* Cabeçalho */
+/* --- ESTILOS DO CABEÇALHO E NAVEGAÇÃO --- */
 .cabecalho{
-  background-color: #1a1d22;
-  height: 80px;
-  border-bottom: 1px solid #2a2f36;
+    background-color: #ffd900;
+    height: 80px;
 }
-
-.lista__cabecalho{
-  color: #e6e6e6;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 50px;
-  font-size: 20px;
-}
-
-.cabecalho p,
-.cabecalho__click{
-  background-color: #0d0f12;
-  color: #7bb4ff;
-  border: 1px solid #2a2f36;
-  padding: 6px 12px;
+.cabecalho p{
+  background-color: white;
+  padding: 6px;
   border-radius: 10px;
-  text-decoration: none;
-  transition: 0.2s;
 }
-
+.lista__cabecalho{
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 50px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+.cabecalho article {
+    display: flex; 
+    align-items: center;
+}
+.cabecalho__click{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    text-decoration: inherit;
+    padding: 6px;
+    border-radius: 10%;
+}
 .cabecalho__click:hover{
-  box-shadow: 0 0 10px #1e4fa8;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    
 }
 
-/* Hero */
+/* --- ESTILOS DO CONTEÚDO PRINCIPAL/DESTAQUE --- */
 .imagem__principal{
   display: flex;
   flex-direction: column;
+  align-items:first baseline;
   height: calc(100vh - 80px); 
-  background-image: url('../imagens/DemonSlayer.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url('../imagens/DemonSlayer.jpg'); 
+  background-size: cover;        
+  background-position: center;   
+  background-repeat: no-repeat;  
 }
-
 .overtext{
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0d0f12c0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-
 .titulo__imagem{
-  color: #7bb4ff;
-  font-size: 40px;
-  margin-left: 50px;
-  margin-top: 60px;
-  text-shadow: 0 0 8px #1a3a5f;
-}
-
+    color: white;
+    font-size: 40px;
+    margin-left: 50px;
+    margin-top: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
 .descricao__imagem{
-  font-size: 20px;
-  margin-left: 50px;
-  margin-top: 150px;
-  color: #d5d5d5;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-top: 150px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
 }
-
 .imdb{
-  font-size: 20px;
-  color: #7bb4ff;
-  margin-left: 50px;
+    font-size: 20px;
+    color: rgba(204, 204, 204, 0.616);
+    margin-left: 50px;
+    word-spacing: 5px;
 }
-
 .classificacao{
-  margin-left: 50px;
-  font-size: 20px;
-  text-decoration: underline;
-  color: #e6e6e6;
+    margin-left: 50px;
+    font-size: 20px;
+    text-decoration: underline;
+    color: white;
+    word-spacing: 5px;
 }
-
 .overtext button{
   margin-left: 50px;
-  padding: 12px 25px;
-  background: #2376ff;
+  padding: 10px 20px;
+  background-color: white;
   border: none;
-  color: white;
-  border-radius: 10px;
+  color: black;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 18px;
-  box-shadow: 0 0 10px #1e4fa8;
-  transition: 0.2s;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.overtext button:hover {
+  background-color: #f8e263;
 }
 
-.overtext button:hover{
-  background: #1b5fd6;
-  box-shadow: 0 0 12px #2f80ff;
-}
-
-/* Footer */
+/* --- ESTILOS DO RODAPÉ --- */
 .footer{
   height: 130px;
-  background-color: #1a1d22;
-  border-top: 1px solid #2a2f36;
+  background-color: #ffd900;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .logo__footer{
-  font-size: 20px;
-  background-color: #0d0f12;
-  padding: 6px 12px;
+  font-size: 20px ;
+  background-color: white;
+  padding: 6px;
   border-radius: 10px;
-  color: #7bb4ff;
-  border: 1px solid #2a2f36;
+}
+.footer article {
+  text-decoration: none;
+  color:black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.footer article p {
+  margin-left: 10px;
+}
+.footer a:hover{
+  color: rgb(115, 116, 117);
 }
 
-.footer article {
-  color:#e6e6e6;
+
+/* ======================================= */
+/* --- ESTILOS PARA CARRINHO E MODAIS --- */
+/* ======================================= */
+
+/* Estilos para o Ícone do Carrinho */
+.cart-icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  margin-left: 15px; 
   display: flex;
   align-items: center;
+  color: white; 
 }
 
-.footer article p{
+#cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #e50914; 
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+/* Estilos para a Barra Lateral do Carrinho */
+.cart-sidebar {
+  /* ... estilos existentes ... */
+  height: 100vh; /* GARANTE que ocupe a altura total da tela VISÍVEL */
+  width: 0; 
+  position: fixed;
+  z-index: 100; 
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  /* padding-top: 60px; <-- REMOVA ESTA LINHA */
+  color: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column; 
+}
+
+.cart-sidebar.open {
+  width: 350px; 
+}
+
+.cart-header {
+  padding: 10px 20px;
+  padding-top: 20px; /* Adiciona padding na parte superior do cabeçalho */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.cart-header h3 {
+  margin: 0;
+}
+
+.cart-header .close-btn {
+  font-size: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  line-height: 1;
+}
+
+.cart-items {
+  flex-grow: 1; /* CORREÇÃO: Faz o conteúdo esticar e empurrar o rodapé */
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dotted #333;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-info p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.remove-btn {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.8em;
   margin-left: 10px;
 }
 
-.footer a:hover{
-  color: #7bb4ff;
+.cart-footer {
+  /* Não precisa de flex-grow, apenas o tamanho do conteúdo */
+  padding: 20px;
+  border-top: 1px solid #333;
+  text-align: right;
 }
 
-#campoBusca {
-  width: 90%;
-  max-width: 380px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  font-size: 16px;
-
-  /* ícone e texto */
-  outline: none;
-  transition: all 0.25s ease-in-out;
-
-  /* sombra leve */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+.cart-footer p {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
-#campoBusca::placeholder {
-  color: rgba(255, 255, 255, 0.55);
+.checkout-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1em;
 }
 
-/* efeito hover */
-#campoBusca:hover {
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.40);
+/* Estilos para Modais */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 101; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* efeito ao clicar (focus) */
-#campoBusca:focus {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #00e1ff;
-  box-shadow: 0 0 12px #00e1ff;
+.modal-content {
+  background-color: #1e1e1e;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 8px;
+  color: white;
+  position: relative;
 }
 
+.modal-content h4 {
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.modal-content .close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-content .close-btn:hover,
+.modal-content .close-btn:focus {
+  color: #e50914;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#payment-options label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#payment-modal button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+#confirmation-modal button {
+  padding: 10px 20px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
