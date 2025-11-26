@@ -14,6 +14,18 @@ const confirmationModal = document.getElementById('confirmation-modal');
 const confirmationMessageElement = document.getElementById('confirmation-message');
 
 
+function notify(text) {
+  const n = document.getElementById("notify");
+  n.textContent = text;
+  n.style.top = "20px";
+
+  setTimeout(() => {
+    n.style.top = "-60px";
+  }, 2500);
+}
+
+
+
 // --- Funções da Barra Lateral do Carrinho ---
 
 /** Abre/fecha a barra lateral do carrinho. */
@@ -57,7 +69,7 @@ function addToCart(movieName) {
   const isDuplicate = cart.some(item => item.id === movieName.toLowerCase().replace(/ /g, '-'));
 
   if (isDuplicate) {
-    alert(`"${movieName}" já está no seu carrinho!`);
+    notify(`"${movieName}" já está no seu carrinho!`);
     return;
   }
   
@@ -71,7 +83,7 @@ function addToCart(movieName) {
   renderCart();
   toggleCartSidebar(); // Abre o carrinho após adicionar
 
-  alert(`"${movieName}" adicionado ao carrinho!`);
+  notify(`"${movieName}" adicionado ao carrinho!`);
 }
 
 /** Remove um filme do carrinho pelo índice. */
@@ -90,7 +102,7 @@ function openPaymentModal() {
   console.log('Tentando abrir modal de pagamento...'); // Ajuda de Debug
 
   if (cart.length === 0) {
-    alert('Seu carrinho está vazio. Adicione filmes antes de finalizar a compra.');
+    notify('Seu carrinho está vazio. Adicione filmes antes de finalizar a compra.');
     return;
   }
   
@@ -116,7 +128,7 @@ function confirmPayment() {
   const selectedOption = document.querySelector('input[name="payment"]:checked');
 
   if (!selectedOption) {
-    alert('Por favor, selecione uma opção de pagamento.');
+    notify('Por favor, selecione uma opção de pagamento.');
     return;
   }
 
@@ -144,3 +156,83 @@ window.onclick = function(event) {
     closeConfirmationModal();
   }
 }
+
+
+// --- Controle dos Carrosseis ---
+document.querySelectorAll(".carrossel-container").forEach(container => {
+  
+  const carrossel = container.querySelector(".carrossel");
+  const btnLeft = container.querySelector(".btn-left");
+  const btnRight = container.querySelector(".btn-right");
+
+  const scrollAmount = 300; // px por clique
+
+  // mover para esquerda
+  btnLeft.addEventListener("click", () => {
+    carrossel.scrollBy({
+      left: -scrollAmount,
+      behavior: "smooth"
+    });
+  });
+
+  // mover para direita
+  btnRight.addEventListener("click", () => {
+    carrossel.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth"
+    });
+  });
+
+});
+
+// ===============================
+// CAMPO DE BUSCA
+// ===============================
+
+const campoBusca = document.getElementById('campoBusca');
+const filmes = document.querySelectorAll('.filme');
+
+const secoesParaEsconder = [
+  document.getElementById('destaque'),
+  document.getElementById('populares'),
+  document.getElementById('tituloPopulares'),
+];
+
+const todosH2 = document.querySelectorAll('h2');
+
+const botoes1 = document.querySelectorAll('.btn.btn-right');
+const botoes2 = document.querySelectorAll('.btn.btn-left');
+
+
+// EVENTO DO CAMPO DE BUSCA
+campoBusca.addEventListener('input', () => {
+  const termo = campoBusca.value.toLowerCase().trim();
+  const estaBuscando = termo !== '';
+
+  // FILTRO DOS FILMES
+  filmes.forEach(filme => {
+    const nome = filme.querySelector('img').alt.toLowerCase();
+
+    if (estaBuscando) {
+      filme.style.display = nome.includes(termo) ? 'block' : 'none';
+    } else {
+      filme.style.display = ''; // volta ao CSS original
+    }
+  });
+
+  // MOSTRAR / ESCONDER BOTÕES
+  [...botoes1, ...botoes2].forEach(btn =>
+    btn.style.display = estaBuscando ? 'none' : ''
+  );
+
+  // ESCONDER / MOSTRAR SEÇÕES
+  secoesParaEsconder.forEach(secao => {
+    if (secao) secao.style.display = estaBuscando ? 'none' : '';
+  });
+
+  // ESCONDER / MOSTRAR H2
+  todosH2.forEach(h2 =>
+    h2.style.display = estaBuscando ? 'none' : ''
+  );
+});
+

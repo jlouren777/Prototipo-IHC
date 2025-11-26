@@ -8,9 +8,11 @@
 .carrossel {
   display: flex;
   overflow-x: auto;
-  scroll-behavior: smooth;
   padding: 10px 0;
   scroll-snap-type: x mandatory;
+  gap: 20px;
+  overflow-x: auto; /* ESSENCIAL */
+  scroll-behavior: smooth;
 }
 
 .carrossel::-webkit-scrollbar {

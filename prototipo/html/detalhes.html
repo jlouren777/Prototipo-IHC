@@ -33,7 +33,7 @@
       .container {
         display: flex;
         gap: 40px;
-        align-items: flex-start;
+        align-items: stretch; /* ESSENCIAL */
         background: #1a1d22; /* cinza grafite */
         padding: 25px;
         border-radius: 15px;
@@ -91,9 +91,35 @@
         align-self: center;
         border: 1px solid #2a2f36;
       }
+
+      .info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .info button {
+        margin-top: auto; /* empurra o botão para o fim */
+      }
     </style>
   </head>
   <body>
+    <div
+      id="notify"
+      style="
+        position: fixed;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #2376ff;
+        padding: 14px 30px;
+        color: white;
+        border-radius: 8px;
+        font-size: 18px;
+        transition: 0.3s;
+      "
+    ></div>
+
     <h2 id="titulo-filme">MovieStar⭐</h2>
     <div id="detalhes-container"><p>Carregando detalhes...</p></div>
 
@@ -283,7 +309,7 @@
             <div class="info">
               <p class="sinopse"><strong>Sinopse:</strong> ${info.sinopse}</p>
               <p class="imdb">⭐ IMDb: ${info.imdb}</p>
-              <button onclick="alert('Adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+              <button onclick="notify('Adicionado ao carrinho!')">Adicionar ao Carrinho</button>
             </div>
           </div>
           <iframe width="80%" height="450" src="${info.trailer}" allowfullscreen></iframe
